@@ -1,0 +1,183 @@
+// --- $VARS --- //
+$font-stack: Helvetica Neue, sans-serif;
+$primary-color: #444;
+$menu-border-color: #ddd;
+
+$icon-delay: 2000;
+
+/* every animation speed is multiplied by this number, use 1 in production */
+$anim-multiplier: 1;
+
+// MIXINS
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50.1%, -50.1%);
+}
+
+@mixin transition-delay($delay) {
+  animation-delay: $delay;
+}
+
+// MAIN CSS
+html, body { margin: 0; }
+
+body {
+  font-family: Helvetica Neue, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+a {
+  color: $primary-color;
+}
+
+.hidden { pointer-events: none; opacity: 0; }
+
+#home {
+  @include center;
+  max-width: 400px;
+  transition: all .5s ease-out;  
+
+  .name {
+    text-align: center;
+    color: $primary-color;
+    margin: 0;
+    padding-bottom: 5px;
+  }
+
+  .tagline {
+    text-align: center;
+    font-weight: 300;
+    display: none;
+    font-size: 18px;
+
+    a {
+      color: $primary-color;
+      line-height: 22px;
+      font-weight: 600;
+    }
+  }
+
+  .name, .tagline {
+    cursor: default;
+  }
+
+  .outlinks {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+
+    li {
+      margin: 0 5px;
+      padding: 0;
+      display: inline-block;
+
+      a {
+        display: block;
+        background: #888;
+        width: 20px;
+        height: 20px;
+
+        &:hover {
+          
+        }
+      }
+    }
+  }
+}
+
+#game {
+  #register {
+    border-right: solid 2px $menu-border-color;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    padding: 15px;
+    background: #fff;
+    transition: all .5s ease-in;
+
+    div {
+      transition: all .7s ease-out;
+    }
+
+    &.hidden {
+      transform: translateX(-200px);
+      transition: all .5s ease-in;
+
+      div {
+        transform: translateX(-400px);
+      }
+    }
+  }
+
+  #menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 80px;
+    background: #fff;
+    border-right: solid 2px $menu-border-color;
+    transition: all .5s ease-in;
+
+    &.hidden {
+      left: -80px;
+
+      li {
+        a {
+          transform: translateX(-4em);
+        }
+
+        @for $i from 1 through 5 {
+          &:nth-child(#{$i}) a {
+            transition: all .5s ease-out 0;
+          }
+        }
+      }
+    }
+
+    li {
+      a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        height: 70px;
+        transition: all .5s ease-out;
+      }
+
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) a {
+          transition-delay: #{$i * 100}ms;
+        }
+      }
+    }
+  }
+}
+
+// KEYFRAMES
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeout {
+  from  { opacity: 1; }
+  to    { opacity: 0; }
+}
+
+@keyframes flyin {
+  0%    { transform: scale(1.4, 1.4); opacity: 0 }
+  100%  { transform: scale(1, 1); opacity: 1 }
+}
+
+@keyframes slideright {
+  0%    { transform: translateX(-4em); }
+  100%  { transform: translateX(0); }
+}

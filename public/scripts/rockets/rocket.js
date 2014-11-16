@@ -1,9 +1,9 @@
 define([], function() {
-  var Rocket = function(x, y) {
+  var Rocket = function(x, y, velocity) {
     this.x = x || 0;
     this.y = y || 0;
 
-    this.velocity = 2;
+    this.velocity = (typeof velocity !== 'undefined') ? velocity : 1;
     this.turning = 0;
 
     this.angle = 1;

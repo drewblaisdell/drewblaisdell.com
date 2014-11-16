@@ -1,13 +1,15 @@
 define([
   'underscore',
   'rockets/rocketmanager',
-  'rockets/renderer'
-], function(_, RocketManager, Renderer) {
+  'rockets/renderer',
+  'rockets/gameclient'
+], function(_, RocketManager, Renderer, GameClient) {
   var Main = function(canvas) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.rocketManager = new RocketManager(this);
     this.renderer = new Renderer(this);
+    this.gameClient = new GameClient(this);
   }
 
   Main.prototype.init = function() {
@@ -19,10 +21,12 @@ define([
 
     // load the rocket image
     this.renderer.loadRocket(function() {
-      self.run();
+      // initialize the game client
+      self.gameClient.init(function() {
+        // run the game
+        self.run();
+      });
     });
-
-    this.rocketManager.addRocket(100, 100);
   };
 
   Main.prototype.run = function() {

@@ -1,9 +1,9 @@
 define([], function() {
-  var Rocket = function(x, y, velocity) {
+  var Rocket = function(x, y) {
     this.x = x || 0;
     this.y = y || 0;
 
-    this.velocity = velocity || 0;
+    this.velocity = 2;
     this.turning = 0;
 
     this.angle = 1;
@@ -19,10 +19,18 @@ define([], function() {
   };
 
   Rocket.prototype.update = function() {
-    this.angle += this.turning;
+    this.angle += Math.min(this.equation(), 1) / 10;
 
     this.x += this.velocity * Math.cos(this.angle);
     this.y += this.velocity * Math.sin(this.angle);
+  };
+
+  Rocket.prototype.equation = function() {
+    var t = Math.floor(Date.now() / 1000),
+      r = Math.random(),
+      a = this.angle;
+
+    return r;
   };
 
   return Rocket;

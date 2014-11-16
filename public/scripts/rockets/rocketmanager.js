@@ -4,8 +4,8 @@ define(['rockets/rocket'], function(Rocket) {
     this.rockets = [];
   };
 
-  RocketManager.prototype.addRocket = function(x, y, velocity) {
-    var rocket = new Rocket(x, y, velocity);
+  RocketManager.prototype.addRocket = function(x, y) {
+    var rocket = new Rocket(x, y);
     this.rockets.push(rocket);
   };
 

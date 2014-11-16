@@ -1,5 +1,20 @@
 module.exports = function(grunt) {
   grunt.initConfig({
+    copy: {
+      client: {
+        src: 'rockets/*',
+        dest: 'public/scripts/',
+        filter: 'isFile',
+        flatten: true
+      },
+      server: {
+        src: 'rockets/*',
+        dest: 'app/',
+        filter: 'isFile',
+        flatten: true
+      }
+    },
+
     includeSource: {
       options: {
         basePath: 'public',
@@ -43,6 +58,7 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-include-source');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');

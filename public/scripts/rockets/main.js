@@ -22,7 +22,7 @@ define([
       self.run();
     });
 
-    this.rocketManager.addRocket(100, 100, 1);
+    this.rocketManager.addRocket(100, 100);
   };
 
   Main.prototype.run = function() {

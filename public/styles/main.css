@@ -73,18 +73,19 @@ a {
        -moz-transition: all .7s ease-out;
             transition: all .7s ease-out; }
   #game #register.hidden {
-    -webkit-transform: translateX(-200px);
-       -moz-transform: translateX(-200px);
-        -ms-transform: translateX(-200px);
-            transform: translateX(-200px);
+    opacity: 1;
+    -webkit-transform: translateX(-240px);
+       -moz-transform: translateX(-240px);
+        -ms-transform: translateX(-240px);
+            transform: translateX(-240px);
     -webkit-transition: all .5s ease-in;
        -moz-transition: all .5s ease-in;
             transition: all .5s ease-in; }
     #game #register.hidden div {
-      -webkit-transform: translateX(-400px);
-         -moz-transform: translateX(-400px);
-          -ms-transform: translateX(-400px);
-              transform: translateX(-400px); }
+      -webkit-transform: translateX(-300px);
+         -moz-transform: translateX(-300px);
+          -ms-transform: translateX(-300px);
+              transform: translateX(-300px); }
 #game #menu {
   list-style: none;
   margin: 0;

@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'views/base',
-  'rockets/main',
+  'game/main',
   'views/gamemenu'
 ], function($, _, Backbone, BaseView, Rockets, GameMenu) {
   var GameView = BaseView.extend({

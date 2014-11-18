@@ -1,10 +1,10 @@
 require.config({
-  basePath: 'scripts',
+  basePath: 'scripts/game/',
   paths: {
-    jquery: '../bower_components/jquery/dist/jquery',
-    underscore: '../bower_components/underscore/underscore-min',
-    backbone: '../bower_components/backbone/backbone',
-    ldsh: '../bower_components/lodash-template-loader/loader'
+    jquery: '../../bower_components/jquery/dist/jquery',
+    underscore: '../../bower_components/underscore/underscore-min',
+    backbone: '../../bower_components/backbone/backbone',
+    ldsh: '../../bower_components/lodash-template-loader/loader'
   },
 
   map: {

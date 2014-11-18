@@ -2,13 +2,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
     copy: {
       client: {
-        src: 'rockets/*',
+        src: 'game/*',
         dest: 'public/scripts/',
         filter: 'isFile',
         flatten: true
       },
       server: {
-        src: 'rockets/*',
+        src: 'game/*',
         dest: 'app/',
         filter: 'isFile',
         flatten: true

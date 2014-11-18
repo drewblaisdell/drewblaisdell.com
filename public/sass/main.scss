@@ -105,11 +105,12 @@ a {
     }
 
     &.hidden {
-      transform: translateX(-200px);
+      opacity: 1;
+      transform: translateX(-240px);
       transition: all .5s ease-in;
 
       div {
-        transform: translateX(-400px);
+        transform: translateX(-300px);
       }
     }
   }

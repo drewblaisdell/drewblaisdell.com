@@ -1,11 +1,45 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 var app = express();
 var http = require('http').Server(app);
 var path = require('path');
-var Game = require('./app/rockets/main');
+var config = require('./app/oauth');
+var passport = require('passport');
+var auth = require('./app/authentication');
+var mongoose = require('mongoose');
+var User = require('./app/models/user');
+// var Game = require('./app/game/main');
+
+mongoose.connect('mongodb://localhost/test');
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({ secret: config.secret, resave: true, saveUninitialized: true, maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7 }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res, next) {
+  res.render('../public/index.ejs', { user: req.user });
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-var g = new Game();
 
-http.listen(3000);
+app.get('/auth/twitter',
+  passport.authenticate('twitter'),
+  function(req, res) {
+});
+
+app.get('/auth/twitter/callback',
+  passport.authenticate('twitter', { failureRedirect: '/' }),
+  function(req, res) {
+  res.redirect('/');
+});
+
+// var g = new Game();
+
+http.listen(80);

@@ -2,3 +2,4 @@
 .sass-cache
 node_modules
 public/bower_components
+app/oauth.js

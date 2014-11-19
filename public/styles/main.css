@@ -56,7 +56,7 @@ a {
         width: 20px;
         height: 20px; }
 
-#game #register {
+#game #signin {
   border-right: solid 2px #ddd;
   position: fixed;
   top: 0;
@@ -68,11 +68,11 @@ a {
   -webkit-transition: all .5s ease-in;
      -moz-transition: all .5s ease-in;
           transition: all .5s ease-in; }
-  #game #register div {
+  #game #signin div {
     -webkit-transition: all .7s ease-out;
        -moz-transition: all .7s ease-out;
             transition: all .7s ease-out; }
-  #game #register.hidden {
+  #game #signin.hidden {
     opacity: 1;
     -webkit-transform: translateX(-240px);
        -moz-transform: translateX(-240px);
@@ -81,7 +81,7 @@ a {
     -webkit-transition: all .5s ease-in;
        -moz-transition: all .5s ease-in;
             transition: all .5s ease-in; }
-    #game #register.hidden div {
+    #game #signin.hidden div {
       -webkit-transform: translateX(-300px);
          -moz-transform: translateX(-300px);
           -ms-transform: translateX(-300px);

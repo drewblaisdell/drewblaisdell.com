@@ -21,11 +21,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({ secret: config.secret, resave: true, saveUninitialized: true, maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.set('view engine', 'ejs');
-
-app.get('/', function(req, res, next) {
-  res.render('../public/index.ejs', { user: req.user });
+app.use(function(req, res, next) {
+  // save the user token to a cookie if it exists
+  if (req.user) {
+    res.cookie('token', req.user._id.toString(), { maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7 });
+  }
+  next();
 });
 
 app.get('/api/user/:id', api.user);
@@ -42,7 +43,7 @@ app.get('/auth/twitter',
 app.get('/auth/twitter/callback',
   passport.authenticate('twitter', { failureRedirect: '/' }),
   function(req, res) {
-  res.redirect('/');
+    res.redirect('/#/play');
 });
 
 // var g = new Game();

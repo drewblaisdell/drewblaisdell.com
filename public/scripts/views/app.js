@@ -13,9 +13,7 @@ define([
       var self = this;
 
       this.router = new AppRouter(this);
-
-      this.token = (window.token) ? window.token : false;
-      this.session = new SessionModel(this.token);
+      this.session = new SessionModel();
       this.session.checkAuth(function() {
         Backbone.history.start();
       });

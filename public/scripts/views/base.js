@@ -5,27 +5,16 @@ define([
 ], function($, _, Backbone) {
   var BaseView = Backbone.View.extend({
     hide: function(options) {
-      var options = options || {},
-        self = this;
-
-      if (options.fade) {
-        this.$el.addClass('hidden-fade');
-        this.$el.on('animationend webkitAnimationEnd oAnimationEnd', function() {
-          self.$el.addClass('hidden');
-          self.$el.removeClass('hidden-fade');
-        });
-      } else {
-        this.$el.addClass('hidden');
-      }
+      this.$el.addClass('hidden');
     },
     
     initialize: function(options) {
       this.options = options || {};
       
       if (this.options.hidden) {
-        this.$el.addClass('hidden');
+        this.hide();
       } else {
-        this.$el.removeClass('hidden');
+        this.show();
       }
     },
 
@@ -35,6 +24,26 @@ define([
 
     show: function() {
       this.$el.removeClass('hidden');
+    },
+
+    showSubView: function(name, View) {
+      if (this.views[name]) {
+        this.views[name].show();
+      } else {
+        this.views[name] = new View().render();
+      }
+    },
+
+    hideSubView: function(name, View) {
+      if (this.views[name]) {
+        this.views[name].hide({  });
+      } else {
+        this.views[name] = new View({ hidden: true }).render();
+      }
+    },
+
+    getSubView: function(name) {
+      return this.views[name];
     },
 
     transitionIn: function(callback) {
@@ -61,7 +70,9 @@ define([
           callback();
         }
       });
-    }
+    },
+
+    views: {}
   });
 
   return BaseView;

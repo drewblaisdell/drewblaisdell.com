@@ -18,21 +18,21 @@ define([
     },
 
     home: function() {
-      this.app.showView('home', HomeView);
-      this.app.showView('game', GameView);
-      this.app.hideView('gamemenu', GameMenuView);
-      this.app.hideView('register', SignInView);
+      this.app.showSubView('home', HomeView);
+      this.app.showSubView('game', GameView);
+      this.app.hideSubView('gamemenu', GameMenuView);
+      this.app.hideSubView('register', SignInView);
       this.app.initial = true;
     },
 
     game: function() {
-      this.app.showView('game', GameView);
+      this.app.showSubView('game', GameView);
       if (this.app.session.get('loggedIn')) {
-        this.app.showView('gamemenu', GameMenuView);
+        this.app.showSubView('gamemenu', GameMenuView);
       } else {
-        this.app.showView('signin', SignInView);
+        this.app.showSubView('signin', SignInView);
       }
-      this.app.hideView('home', HomeView);
+      this.app.hideSubView('home', HomeView);
       this.app.initial = true;
     }
   });

@@ -4,21 +4,21 @@ define([
   'backbone',
   'views/base',
   'router',
-  'models/user'
-], function($, _, Backbone, BaseView, AppRouter, User) {
+  'models/session'
+], function($, _, Backbone, BaseView, AppRouter, SessionModel) {
   var AppView = BaseView.extend({
     el: 'body',
 
     initialize: function() {
+      var self = this;
+
       this.router = new AppRouter(this);
 
       this.token = (window.token) ? window.token : false;
-
-      if (typeof this.token !== 'undefined') {
-        this.user = new User(this.token);
-        this.user.fetch();
-        console.log(this.user.toJSON());
-      }
+      this.session = new SessionModel(this.token);
+      this.session.checkAuth(function() {
+        Backbone.history.start();
+      });
     },
 
     openView: function(name, view) {

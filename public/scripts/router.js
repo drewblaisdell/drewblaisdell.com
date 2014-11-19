@@ -27,7 +27,7 @@ define([
 
     game: function() {
       this.appView.showView('game', GameView);
-      if (false) {
+      if (this.appView.session.get('loggedIn')) {
         // future "logged in" view
         this.appView.showView('gamemenu', GameMenuView);
       } else {

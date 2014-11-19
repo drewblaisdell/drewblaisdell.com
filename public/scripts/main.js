@@ -17,6 +17,4 @@ require.config({
 
 require(['app'], function(App) {
   window.app = new App();
-
-  Backbone.history.start();
 });

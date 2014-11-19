@@ -10,6 +10,14 @@ var User = mongoose.model('User', {
   created: Date
 });
 
+User.prototype.allData = function() {
+  var user = this.toJSON();
+
+  user.oauthID = this.oauthID;
+
+  return user;
+};
+
 User.prototype.toJSON = function() {
   return {
     name: this.name,

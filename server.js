@@ -30,6 +30,7 @@ app.get('/', function(req, res, next) {
 
 app.get('/api/user/:id', api.user);
 app.get('/api/users', api.users);
+app.get('/api/auth/:id', api.auth);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

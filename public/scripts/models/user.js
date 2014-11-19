@@ -4,11 +4,15 @@ define([
   'backbone'
 ], function($, _, Backbone) {
   var User = Backbone.Model.extend({
-    initialize: function(token) {
-      if (typeof token !== 'undefined') {
-        this.token = token;
-        this.url = '/api/user/'+ this.token;
-      }
+    defaults: {
+      'name': '',
+      'oauthID': undefined,
+      'x': undefined,
+      'y': undefined,
+      'angle': undefined
+    },
+
+    initialize: function() {
     }
   });
 

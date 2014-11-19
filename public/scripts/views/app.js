@@ -3,13 +3,22 @@ define([
   'underscore',
   'backbone',
   'views/base',
-  'router'
-], function($, _, Backbone, BaseView, AppRouter) {
+  'router',
+  'models/user'
+], function($, _, Backbone, BaseView, AppRouter, User) {
   var AppView = BaseView.extend({
     el: 'body',
 
     initialize: function() {
       this.router = new AppRouter(this);
+
+      this.token = (window.token) ? window.token : false;
+
+      if (typeof this.token !== 'undefined') {
+        this.user = new User(this.token);
+        this.user.fetch();
+        console.log(this.user.toJSON());
+      }
     },
 
     openView: function(name, view) {

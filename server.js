@@ -9,11 +9,13 @@ var config = require('./app/oauth');
 var passport = require('passport');
 var auth = require('./app/authentication');
 var mongoose = require('mongoose');
-var User = require('./app/models/user');
+var morgan = require('morgan');
+var api = require('./app/api');
 // var Game = require('./app/game/main');
 
 mongoose.connect('mongodb://localhost/test');
 
+app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({ secret: config.secret, resave: true, saveUninitialized: true, maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7 }));
@@ -26,8 +28,10 @@ app.get('/', function(req, res, next) {
   res.render('../public/index.ejs', { user: req.user });
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.get('/api/user/:id', api.user);
+app.get('/api/users', api.users);
 
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/auth/twitter',
   passport.authenticate('twitter'),

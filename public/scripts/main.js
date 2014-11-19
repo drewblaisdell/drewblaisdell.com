@@ -15,6 +15,6 @@ require.config({
   }
 });
 
-require(['app'], function(App) {
+require(['views/app'], function(App) {
   window.app = new App();
 });

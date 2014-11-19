@@ -5,11 +5,11 @@ define([
   'views/home',
   'views/game',
   'views/gamemenu',
-  'views/register'
-], function($, _, Backbone, HomeView, GameView, GameMenuView, RegisterView) {
+  'views/signin'
+], function($, _, Backbone, HomeView, GameView, GameMenuView, SignInView) {
   var AppRouter = Backbone.Router.extend({
-    initialize: function(appView) {
-      this.appView = appView;
+    initialize: function(app) {
+      this.app = app;
     },
 
     routes: {
@@ -18,23 +18,22 @@ define([
     },
 
     home: function() {
-      this.appView.showView('home', HomeView);
-      this.appView.showView('game', GameView);
-      this.appView.hideView('gamemenu', GameMenuView);
-      this.appView.hideView('register', RegisterView);
-      this.appView.initial = true;
+      this.app.showView('home', HomeView);
+      this.app.showView('game', GameView);
+      this.app.hideView('gamemenu', GameMenuView);
+      this.app.hideView('register', SignInView);
+      this.app.initial = true;
     },
 
     game: function() {
-      this.appView.showView('game', GameView);
-      if (this.appView.session.get('loggedIn')) {
-        // future "logged in" view
-        this.appView.showView('gamemenu', GameMenuView);
+      this.app.showView('game', GameView);
+      if (this.app.session.get('loggedIn')) {
+        this.app.showView('gamemenu', GameMenuView);
       } else {
-        this.appView.showView('register', RegisterView);
+        this.app.showView('signin', SignInView);
       }
-      this.appView.hideView('home', HomeView);
-      this.appView.initial = true;
+      this.app.hideView('home', HomeView);
+      this.app.initial = true;
     }
   });
 

@@ -4,11 +4,11 @@ define([
   'backbone',
   'views/base'
 ], function($, _, Backbone, BaseView) {
-  var RegisterView = BaseView.extend({
-    el: $('#register'),
+  var SignInView = BaseView.extend({
+    el: $('#signin'),
 
     render: function() {}
   });
 
-  return RegisterView;
+  return SignInView;
 });

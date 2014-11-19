@@ -2,21 +2,14 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'views/base',
-  'views/computermenu'
-], function($, _, Backbone, BaseView, ComputerMenuView) {
-  var GameMenuView = BaseView.extend({
-    el: $('#menu'),
-
-    render: function() {
-      return this;
-    },
-
+  'views/base'
+], function($, _, Backbone, BaseView) {
+  var SubMenuView = BaseView.extend({
     hide: function() {
       BaseView.prototype.hide.call(this);
 
       this.$el.on('transitionend webkitTransitionEnd', function() {
-        $('body').removeClass('menu-open');
+        $('body').removeClass('sub-menu-open');
       });
     },
 
@@ -24,10 +17,10 @@ define([
       BaseView.prototype.show.call(this);
 
       this.$el.on('transitionend webkitTransitionEnd', function() {
-        $('body').addClass('menu-open');
+        $('body').addClass('sub-menu-open');
       });
     }
   });
 
-  return GameMenuView;
+  return SubMenuView;
 });

@@ -6,6 +6,12 @@ define([
   var BaseView = Backbone.View.extend({
     hide: function(options) {
       this.$el.addClass('hidden');
+
+      if (this.views) {
+        _.forEach(this.views, function(view) {
+          view.hide();
+        });
+      }
     },
     
     initialize: function(options) {
@@ -27,6 +33,7 @@ define([
     },
 
     showSubView: function(name, View) {
+      this.views = this.views || {};
       if (this.views[name]) {
         this.views[name].show();
       } else {
@@ -35,6 +42,7 @@ define([
     },
 
     hideSubView: function(name, View) {
+      this.views = this.views || {};
       if (this.views[name]) {
         this.views[name].hide({  });
       } else {
@@ -44,35 +52,7 @@ define([
 
     getSubView: function(name) {
       return this.views[name];
-    },
-
-    transitionIn: function(callback) {
-      var view = this;
-
-      var transitionIn = function() {
-        view.$el.addClass('is-visible');
-        view.$el.on('transitionend', function() {
-          if (_.isFunction(callback)) {
-            callback();
-          }
-        });
-      };
-
-      _.delay(transitionIn, 20);
-    },
-
-    transitionOut: function(callback) {
-      var view = this;
-
-      view.$el.removeClass('is-visible');
-      view.$el.on('transitionend', function() {
-        if (_.isFunction(callback)) {
-          callback();
-        }
-      });
-    },
-
-    views: {}
+    }
   });
 
   return BaseView;

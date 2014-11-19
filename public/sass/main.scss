@@ -3,6 +3,11 @@ $font-stack: Helvetica Neue, sans-serif;
 $primary-color: #444;
 $menu-border-color: #ddd;
 
+$menu-width: 80;
+
+$sub-menu-width: 200;
+$sub-menu-padding: 10;
+
 $icon-delay: 2000;
 
 /* every animation speed is multiplied by this number, use 1 in production */
@@ -124,12 +129,14 @@ a {
     left: 0;
     bottom: 0;
     width: 80px;
+    z-index: 2;
     background: #fff;
     border-right: solid 2px $menu-border-color;
     transition: all .5s ease-in;
 
     &.hidden {
-      left: -80px;
+      opacity: 1;
+      transform: translateX(-82px);
 
       li {
         a {
@@ -157,6 +164,29 @@ a {
         &:nth-child(#{$i}) a {
           transition-delay: #{$i * 100}ms;
         }
+      }
+    }
+  }
+
+  #submenu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 1;
+
+    > li {
+      width: #{$sub-menu-width}px;
+      padding: #{$sub-menu-padding}px;
+      position: fixed;
+      top: 0;
+      left: 80px;
+      bottom: 0;
+      border-right: solid 2px $menu-border-color;
+      transition: all .5s ease-out;
+
+      &.hidden {
+        opacity: 1;
+        transform: translateX(-#{$sub-menu-width + $sub-menu-padding*2 + $menu-width + 2}px);
       }
     }
   }

@@ -13,6 +13,10 @@ define([
     },
 
     initialize: function() {
+    },
+
+    isNewUser: function() {
+      return typeof this.get('x') === 'undefined';
     }
   });
 

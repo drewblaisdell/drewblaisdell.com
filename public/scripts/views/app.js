@@ -20,7 +20,6 @@ define([
     },
 
     openView: function(name, view) {
-
     },
 
     render: function(options) {

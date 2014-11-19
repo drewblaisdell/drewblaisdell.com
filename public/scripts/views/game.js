@@ -7,9 +7,16 @@ define([
   'views/gamemenu',
   'collections/users',
   'models/user'
-], function($, _, Backbone, BaseView, Rockets, GameMenu, Users, User) {
+], function($, _, Backbone, BaseView, Rockets, GameMenu, UsersCollection, User) {
   var GameView = BaseView.extend({
     el: $('#game'),
+
+    initialize: function() {
+      BaseView.prototype.initialize.call(this);
+      
+      this.users = new UsersCollection();
+      this.users.fetch();
+    },
 
     events: {
       'click #gameCanvas': 'canvasClick'
@@ -19,9 +26,6 @@ define([
       this.canvas = this.$el.find('#gameCanvas')[0];
       this.rockets = new Rockets(this.canvas);
       this.rockets.init();
-
-      this.users = new Users();
-      this.users.fetch();
 
       return this;
     },

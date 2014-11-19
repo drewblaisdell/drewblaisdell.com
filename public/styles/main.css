@@ -95,13 +95,18 @@ a {
   left: 0;
   bottom: 0;
   width: 80px;
+  z-index: 2;
   background: #fff;
   border-right: solid 2px #ddd;
   -webkit-transition: all .5s ease-in;
      -moz-transition: all .5s ease-in;
           transition: all .5s ease-in; }
   #game #menu.hidden {
-    left: -80px; }
+    opacity: 1;
+    -webkit-transform: translateX(-82px);
+       -moz-transform: translateX(-82px);
+        -ms-transform: translateX(-82px);
+            transform: translateX(-82px); }
     #game #menu.hidden li a {
       -webkit-transform: translateX(-4em);
          -moz-transform: translateX(-4em);
@@ -155,6 +160,28 @@ a {
     -webkit-transition-delay: 500ms;
        -moz-transition-delay: 500ms;
             transition-delay: 500ms; }
+#game #submenu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 1; }
+  #game #submenu > li {
+    width: 200px;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 80px;
+    bottom: 0;
+    border-right: solid 2px #ddd;
+    -webkit-transition: all .5s ease-out;
+       -moz-transition: all .5s ease-out;
+            transition: all .5s ease-out; }
+    #game #submenu > li.hidden {
+      opacity: 1;
+      -webkit-transform: translateX(-302px);
+         -moz-transform: translateX(-302px);
+          -ms-transform: translateX(-302px);
+              transform: translateX(-302px); }
 
 @-webkit-keyframes fadein {
   from {

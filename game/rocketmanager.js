@@ -8,20 +8,26 @@ define(['./rocket'], function(Rocket, require) {
     this.rockets = [];
   };
 
-  RocketManager.prototype.addRocket = function(x, y, velocity) {
-    var rocket;
-    if (typeof arguments[0] === 'object') {
-      rocket = new Rocket(arguments[0].x, arguments[0].y, arguments[0].velocity, arguments[0].angle);
-    } else {
-      rocket = new Rocket(x, y, velocity);
-    }
-    this.rockets.push(rocket);
+  RocketManager.prototype.addRocket = function(options) {
+    this.rockets.push(new Rocket(options));
   };
 
   RocketManager.prototype.addRockets = function(rockets) {
     for (var i = 0, l = rockets.length; i < l; i++) {
       this.addRocket(rockets[i]);
     }
+  };
+
+  RocketManager.prototype.getRocketByID = function(id) {
+    var rockets = this.getRockets();
+
+    for (var i = 0, l = rockets.length; i < l; i++) {
+      if (rockets[i]._id === id) {
+        return rockets[i];
+      }
+    }
+
+    return false;
   };
 
   RocketManager.prototype.getRockets = function() {

@@ -6,7 +6,7 @@ define([
   'game/main',
   'views/gamemenu',
   'collections/users'
-], function($, _, Backbone, BaseView, Rockets, GameMenu, UsersCollection) {
+], function($, _, Backbone, BaseView, Game, GameMenu, UsersCollection) {
   var GameView = BaseView.extend({
     el: $('#game'),
 
@@ -23,8 +23,9 @@ define([
 
     render: function() {
       this.canvas = this.$el.find('#gameCanvas')[0];
-      this.rockets = new Rockets(this.canvas);
-      this.rockets.init();
+      
+      this.game = new Game(this, this.canvas);
+      this.game.init();
 
       return this;
     },

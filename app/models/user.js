@@ -14,6 +14,7 @@ var User = mongoose.model('User', {
 User.prototype.allData = function() {
   var user = this.toJSON();
 
+  user._id = this._id.toString();
   user.oauthID = this.oauthID;
   user.initialSave = this.initialSave;
 

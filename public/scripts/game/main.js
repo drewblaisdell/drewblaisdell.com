@@ -3,7 +3,9 @@ define([
   'game/rocketmanager',
   'game/renderer'
 ], function(_, RocketManager, Renderer, GameClient) {
-  var Main = function(canvas) {
+  var Main = function(view, canvas) {
+    this.view = view;
+    this.model = view.users;
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.rocketManager = new RocketManager(this);
@@ -19,6 +21,7 @@ define([
 
     // load the rocket image
     this.renderer.loadRocket(function() {
+      self.rocketManager.loadRockets(self.model.toJSON());
       self.run();
     });
   };

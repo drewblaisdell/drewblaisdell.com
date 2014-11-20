@@ -1,5 +1,11 @@
 .DS_Store
 .sass-cache
 node_modules
-public/bower_components
 app/oauth.js
+app/game/rocket.js
+app/game/rocketmanager.js
+app/game/config.js
+public/bower_components
+public/scripts/game/rocket.js
+public/scripts/game/rocketmanager.js
+public/scripts/game/config.js

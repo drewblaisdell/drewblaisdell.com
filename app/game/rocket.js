@@ -3,14 +3,15 @@ if (typeof define !== 'function') {
 }
 
 define([], function() {
-  var Rocket = function(x, y, velocity, angle) {
-    this.x = x || 0;
-    this.y = y || 0;
+  var Rocket = function(options) {
+    var options = options || {};
+    this.x = (typeof options.x !== 'undefined') ? options.x : 0;
+    this.y = (typeof options.y !== 'undefined') ? options.y : 0;
+    this.angle = (typeof options.angle !== 'undefined') ? options.angle : 0;
+    this._id = (typeof options._id !== 'undefined') ? options._id : '';
 
-    this.velocity = (typeof velocity !== 'undefined') ? velocity : 1;
+    this.velocity = 0;
     this.turning = 0;
-
-    this.angle = (typeof angle !== 'undefined') ? angle : 1;
   };
 
   Rocket.prototype.pos = function(x, y) {
@@ -22,25 +23,18 @@ define([], function() {
     }
   };
 
-  Rocket.prototype.update = function() {
-    var maxAngle = Math.PI * 2;
+  Rocket.prototype.set = function(options) {
+    this.x = (typeof options.x !== 'undefined') ? options.x : 0;
+    this.y = (typeof options.y !== 'undefined') ? options.y : 0;
+    this.angle = (typeof options.angle !== 'undefined') ? options.angle : 0;
+    this._id = (typeof options._id !== 'undefined') ? options._id : '';
 
-    this.angle += Math.min(this.equation(), 1) / 10;
-
-    if (this.angle > maxAngle) {
-      this.angle -= maxAngle;
-    }
-
-    this.x += this.velocity * Math.cos(this.angle);
-    this.y += this.velocity * Math.sin(this.angle);
+    return this;
   };
 
-  Rocket.prototype.equation = function() {
-    var t = Math.floor(Date.now() / 1000),
-      r = Math.random(),
-      a = this.angle;
-
-    return r;
+  Rocket.prototype.update = function() {
+    this.x += this.velocity * Math.cos(this.angle);
+    this.y += this.velocity * Math.sin(this.angle);
   };
 
   return Rocket;

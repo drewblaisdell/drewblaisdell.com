@@ -44,7 +44,7 @@ exports.auth = function(req, res, next) {
   });
 };
 
-exports.updateUser = function(req, res, next) {
+exports.updateUser = function(req, res, next, callback) {
   if (req.params.id.length !== 24) {
     return next(new Error("invalid ObjectId"));
   }
@@ -63,13 +63,14 @@ exports.updateUser = function(req, res, next) {
     update.y = req.body.y;
   }
 
-  console.log(req.body);
-
   User.findOneAndUpdate({ _id: new ObjectId(req.params.id) }, update, function(err, user) {
     if (err){
       return next(err);
     }
 
     res.json(user.allData());
+    if (callback) {
+      callback(user.allData());
+    }
   });
 };

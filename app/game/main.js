@@ -1,10 +1,8 @@
 var RocketManager = require('./rocketmanager');
-var Database = require('./database');
+var User = require('../models/user');
 
-var Main = function(io) {
-  this.io = io;
-  this.rocketManager = new RocketManager();
-  this.database = new Database();
+var Main = function() {
+  this.rocketManager = new RocketManager(this);
 };
 
 Main.prototype.getState = function() {
@@ -16,12 +14,10 @@ Main.prototype.getState = function() {
 Main.prototype.init = function() {
   var self = this;
 
-  this.database.init();
-
-  this.database.getRockets(function(rockets) {
-    self.rocketManager.loadRockets(rockets);
-    self.run();
+  this.loadFromDatabase(function(users) {
   });
+
+  // self.run();
 };
 
 Main.prototype.run = function() {
@@ -29,6 +25,23 @@ Main.prototype.run = function() {
   setInterval(function() {
     self.rocketManager.updateRockets();
   }, 1000 / 60);
+};
+
+Main.prototype.loadFromDatabase = function(callback) {
+  var self = this;
+  User.find({}, function(err, users) {
+    self.rocketManager.loadRockets(users);  
+    if (callback) {
+      callback(users);
+    }
+  });
+};
+
+Main.prototype.updateFromDatabase = function() {
+  var self = this;
+  User.find({}, function(err, users) {
+    self.rocketManager.loadRockets(users);  
+  });
 };
 
 module.exports = Main;

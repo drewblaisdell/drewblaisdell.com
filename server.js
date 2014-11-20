@@ -11,9 +11,12 @@ var auth = require('./app/authentication');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 var api = require('./app/api');
-// var Game = require('./app/game/main');
+var Game = require('./app/game/main');
 
 mongoose.connect('mongodb://localhost/test');
+
+var game = new Game();
+game.init();
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -32,7 +35,12 @@ app.use(function(req, res, next) {
 app.get('/api/user/:id', api.user);
 app.get('/api/users', api.users);
 app.get('/api/auth/:id', api.auth);
-app.post('/api/auth/:id', api.updateUser);
+app.post('/api/auth/:id', function(req, res, next) {
+  // callback to update the internal game instance from the server
+  api.updateUser(req, res, next, function() {
+    game.updateFromDatabase();
+  });
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -47,6 +55,10 @@ app.get('/auth/twitter/callback',
     res.redirect('/#/play');
 });
 
-// var g = new Game();
+app.get('/api/state', function(req, res, next) {
+  res.json(game.getState());
+  res.end();
+  next();
+});
 
 http.listen(80);

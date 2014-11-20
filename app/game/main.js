@@ -15,9 +15,8 @@ Main.prototype.init = function() {
   var self = this;
 
   this.loadFromDatabase(function(users) {
+    self.run();
   });
-
-  // self.run();
 };
 
 Main.prototype.run = function() {

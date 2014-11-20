@@ -10,6 +10,8 @@ define([
       'x': undefined,
       'y': undefined,
       'angle': undefined,
+      'amplitude': undefined,
+      'velocity': undefined,
       'initialSave': undefined
     },
 

@@ -5,8 +5,9 @@ if (typeof define !== 'function') {
 define([], function() {
   var Config = {
     worldSize: {
-      width: 500,
-      height: 500
+      width: 1000,
+      height: 500,
+      padding: 100
     }
   };
 

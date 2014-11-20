@@ -63,6 +63,14 @@ exports.updateUser = function(req, res, next, callback) {
     update.y = req.body.y;
   }
 
+  if (req.body.amplitude) {
+    update.amplitude = req.body.amplitude;
+  }
+
+  if (req.body.velocity) {
+    update.velocity = req.body.velocity;
+  }
+
   User.findOneAndUpdate({ _id: new ObjectId(req.params.id) }, update, function(err, user) {
     if (err){
       return next(err);

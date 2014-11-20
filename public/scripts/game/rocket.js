@@ -8,10 +8,12 @@ define(['./config'], function(Config) {
     this.x = (typeof options.x !== 'undefined') ? options.x : 0;
     this.y = (typeof options.y !== 'undefined') ? options.y : 0;
     this.angle = (typeof options.angle !== 'undefined') ? options.angle : 0;
+    this.amplitude = (typeof options.amplitude !== 'undefined') ? options.amplitude : 1;
+    this.velocity = (typeof options.velocity !== 'undefined') ? options.velocity : 1;
     this._id = (typeof options._id !== 'undefined') ? options._id : '';
 
-    this.velocity = 3;
     this.turning = 0;
+    this.ticks = 0;
   };
 
   Rocket.prototype.pos = function(x, y) {
@@ -33,6 +35,18 @@ define(['./config'], function(Config) {
   };
 
   Rocket.prototype.update = function() {
+    this.angle += this.turning;
+
+    if (this.amplitude === 1) {
+      this.turning = 0;
+    } else {
+      if (Math.cos(this.ticks / (this.amplitude)) > 0) {
+        this.turning = 0.1;
+      } else {
+        this.turning = -0.1;
+      }
+    }
+
     this.x += this.velocity * Math.cos(this.angle);
     this.y += this.velocity * Math.sin(this.angle);
 
@@ -47,6 +61,8 @@ define(['./config'], function(Config) {
     } else if (this.y < 0) {
       this.y += Config.worldSize.height;
     }
+
+    this.ticks++;
   };
 
   return Rocket;

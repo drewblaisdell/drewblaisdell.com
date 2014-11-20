@@ -21,6 +21,8 @@ define([
       this.angleInput = this.$('.angle');
       this.xInput = this.$('.x');
       this.yInput = this.$('.y');
+      this.ampInput = this.$('.amplitude');
+      this.velInput = this.$('.velocity');
       this.saveButton = this.$('.save');
 
       return this;
@@ -29,9 +31,11 @@ define([
     save: function() {
       var angle = this.angleInput.val(),
         x = this.xInput.val(),
-        y = this.yInput.val();
+        y = this.yInput.val(),
+        amplitude = this.ampInput.val(),
+        velocity = this.velInput.val();
 
-      this.model.save({ angle: angle, x: x, y: y });
+      this.model.save({ angle: angle, x: x, y: y, amplitude: amplitude, velocity: velocity });
     }
   });
 

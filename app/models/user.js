@@ -7,6 +7,8 @@ var User = mongoose.model('User', {
   x: Number,
   y: Number,
   angle: Number,
+  amplitude: Number,
+  velocity: Number,
   initialSave: Number,
   created: Date
 });
@@ -26,7 +28,9 @@ User.prototype.toJSON = function() {
     name: this.name,
     x: this.x,
     y: this.y,
-    angle: this.angle
+    angle: this.angle,
+    amplitude: this.amplitude,
+    velocity: this.velocity
   };
 };
 

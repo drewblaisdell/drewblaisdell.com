@@ -6,12 +6,9 @@ define([
   var BaseView = Backbone.View.extend({
     hide: function(options) {
       this.$el.addClass('hidden');
+      this.visible = false;
 
-      if (this.views) {
-        _.forEach(this.views, function(view) {
-          view.hide();
-        });
-      }
+      this.hideSubViews();
     },
     
     initialize: function(options) {
@@ -29,6 +26,7 @@ define([
     },
 
     show: function() {
+      this.visible = true;
       this.$el.removeClass('hidden');
     },
 
@@ -50,8 +48,29 @@ define([
       }
     },
 
+    hideSubViews: function() {
+      if (this.views) {
+        _.forEach(this.views, function(view) {
+          view.hide();
+        });
+      }
+    },
+
     getSubView: function(name) {
       return this.views[name];
+    },
+
+    toggleSubView: function(name, View) {
+      var view = this.getSubView(name);
+      if (view) {
+        if (view.visible) {
+          view.hide();
+        } else {
+          view.show();
+        }
+      } else {
+        this.showSubView(name, View);
+      }
     }
   });
 

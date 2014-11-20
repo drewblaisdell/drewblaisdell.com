@@ -16,7 +16,8 @@ define([
 
     routes: {
       '': 'home',
-      'play': 'game'
+      'play': 'game',
+      'play/computer': 'computermenu'
     },
 
     home: function() {

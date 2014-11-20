@@ -8,6 +8,10 @@ define([
   var GameMenuView = BaseView.extend({
     el: $('#menu'),
 
+    events: {
+      'click #computer-toggle': 'toggleComputer'
+    },
+
     render: function() {
       return this;
     },
@@ -26,7 +30,15 @@ define([
       this.$el.on('transitionend webkitTransitionEnd', function() {
         $('body').addClass('menu-open');
       });
-    }
+    },
+
+    toggleComputer: function() {
+      this.toggleSubView('computermenu', ComputerMenuView);
+
+      event.preventDefault();
+    },
+
+    views: {}
   });
 
   return GameMenuView;

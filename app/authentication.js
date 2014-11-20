@@ -20,7 +20,11 @@ module.exports = passport.use(new TwitterStrategy({
           oauthID: profile.id,
           accessToken: accessToken,
           name: profile.displayName,
-          created: Date.now()
+          created: Date.now(),
+          x: 0,
+          y: 0,
+          angle: 0,
+          initialSave: 0
         });
 
         user.save(function(err) {

@@ -9,14 +9,15 @@ define([
       'oauthID': undefined,
       'x': undefined,
       'y': undefined,
-      'angle': undefined
+      'angle': undefined,
+      'initialSave': undefined
     },
 
     initialize: function() {
     },
 
     isNewUser: function() {
-      return typeof this.get('x') === 'undefined';
+      return this.get('initialSave') === 0;
     }
   });
 

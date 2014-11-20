@@ -7,6 +7,7 @@ var User = mongoose.model('User', {
   x: Number,
   y: Number,
   angle: Number,
+  initialSave: Number,
   created: Date
 });
 
@@ -14,6 +15,7 @@ User.prototype.allData = function() {
   var user = this.toJSON();
 
   user.oauthID = this.oauthID;
+  user.initialSave = this.initialSave;
 
   return user;
 };

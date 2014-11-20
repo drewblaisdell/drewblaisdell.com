@@ -43,3 +43,33 @@ exports.auth = function(req, res, next) {
     res.json(user.allData());
   });
 };
+
+exports.updateUser = function(req, res, next) {
+  if (req.params.id.length !== 24) {
+    return next(new Error("invalid ObjectId"));
+  }
+
+  var update = { initialSave: 1 };
+
+  if (req.body.angle) {
+    update.angle = req.body.angle;
+  }
+
+  if (req.body.x) {
+    update.x = req.body.x;
+  }
+
+  if (req.body.y) {
+    update.y = req.body.y;
+  }
+
+  console.log(req.body);
+
+  User.findOneAndUpdate({ _id: new ObjectId(req.params.id) }, update, function(err, user) {
+    if (err){
+      return next(err);
+    }
+
+    res.json(user.allData());
+  });
+};

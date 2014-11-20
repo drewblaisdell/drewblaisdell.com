@@ -17,7 +17,7 @@ mongoose.connect('mongodb://localhost/test');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser());
 app.use(session({ secret: config.secret, resave: true, saveUninitialized: true, maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -32,6 +32,7 @@ app.use(function(req, res, next) {
 app.get('/api/user/:id', api.user);
 app.get('/api/users', api.users);
 app.get('/api/auth/:id', api.auth);
+app.post('/api/auth/:id', api.updateUser);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

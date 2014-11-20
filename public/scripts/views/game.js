@@ -5,9 +5,8 @@ define([
   'views/base',
   'game/main',
   'views/gamemenu',
-  'collections/users',
-  'models/user'
-], function($, _, Backbone, BaseView, Rockets, GameMenu, UsersCollection, User) {
+  'collections/users'
+], function($, _, Backbone, BaseView, Rockets, GameMenu, UsersCollection) {
   var GameView = BaseView.extend({
     el: $('#game'),
 

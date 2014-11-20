@@ -12,8 +12,11 @@ define([
     },
     
     initialize: function(options) {
+      options = options || {};
       this.options = options || {};
       
+      this.parent = options.parent;
+
       if (this.options.hidden) {
         this.hide();
       } else {
@@ -35,7 +38,7 @@ define([
       if (this.views[name]) {
         this.views[name].show();
       } else {
-        this.views[name] = new View().render();
+        this.views[name] = new View({ parent: this, app: this }).render();
       }
     },
 
@@ -44,7 +47,7 @@ define([
       if (this.views[name]) {
         this.views[name].hide({  });
       } else {
-        this.views[name] = new View({ hidden: true }).render();
+        this.views[name] = new View({ hidden: true, parent: this, app: this }).render();
       }
     },
 

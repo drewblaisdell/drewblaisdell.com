@@ -5,6 +5,10 @@ define([
   'views/base'
 ], function($, _, Backbone, BaseView) {
   var SubMenuView = BaseView.extend({
+    app: function() {
+      return this.options.parent.parent;
+    },
+
     hide: function() {
       BaseView.prototype.hide.call(this);
 

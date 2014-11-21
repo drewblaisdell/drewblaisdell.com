@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'views/base'
-], function($, _, Backbone, BaseView, HomeTemplate) {
+], function($, _, Backbone, BaseView) {
   var HomeView = BaseView.extend({
     el: $('#home'),
 

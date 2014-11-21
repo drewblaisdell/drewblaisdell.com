@@ -3,9 +3,8 @@ define([
   'underscore',
   'backbone',
   'views/base',
-  'router',
-  'models/session'
-], function($, _, Backbone, BaseView, AppRouter, SessionModel) {
+  'router'
+], function($, _, Backbone, BaseView, AppRouter) {
   var AppView = BaseView.extend({
     el: 'body',
 
@@ -13,13 +12,8 @@ define([
       var self = this;
 
       this.router = new AppRouter(this);
-      this.session = new SessionModel();
-      this.session.checkAuth(function() {
-        Backbone.history.start();
-      });
-    },
 
-    openView: function(name, view) {
+      Backbone.history.start();
     },
 
     render: function(options) {

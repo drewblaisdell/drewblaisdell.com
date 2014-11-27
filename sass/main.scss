@@ -1,7 +1,7 @@
 // --- $VARS --- //
-$font-stack: Helvetica Neue, sans-serif;
-$primary-color: #444;
-$secondary-color: #555;
+$font-stack: Helvetica Neue, Arial sans-serif;
+$primary-color: #333;
+$secondary-color: #666;
 $menu-border-color: #ddd;
 
 $menu-width: 80;
@@ -19,7 +19,7 @@ $anim-multiplier: 1;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50.1%, -50.1%);
+  transform: translate(-50%, -50%);
 }
 
 @mixin transition-delay($delay) {
@@ -30,7 +30,7 @@ $anim-multiplier: 1;
 html, body { margin: 0; }
 
 body {
-  font-family: Helvetica Neue, sans-serif;
+  font-family: $font-stack;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
 }
@@ -39,11 +39,9 @@ a {
   color: $primary-color;
 }
 
-.hidden { pointer-events: none; opacity: 0; }
-
 #home {
   @include center;
-  max-width: 400px;
+  max-width: 600px;
   transition: all .5s ease-out;  
 
   .name {
@@ -51,6 +49,7 @@ a {
     color: $primary-color;
     margin: 0;
     padding-bottom: 5px;
+    font-size: 32px;
   }
 
   .position {
@@ -69,24 +68,67 @@ a {
     list-style: none;
     text-align: center;
     padding: 0;
+    margin: 15px 0 0 0;
 
     li {
-      margin: 0 5px;
+      margin: 0 10px;
       padding: 0;
       display: inline-block;
 
       a {
         display: block;
-        background: #888;
-        width: 20px;
-        height: 20px;
+        height: 22px;
+        font-size: 18px;
+        color: $primary-color;
 
         &:hover {
           
+        }
+
+        &.twitter-icon {
+          background: url('../images/twitter-icon.png');
+          line-height: 24px;
+          font-size: 12px;
+          width: 24px;
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  .cols {
+    padding-top: 40px;
+    .col {
+      &.projects, &.posts {
+        h2 {
+          cursor: default;
+          color: $primary-color;
+          text-align: center;
+          font-size: 14px;
+          text-transform: uppercase;
+          margin: 20px 0 5px 0;
+        }
+
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            margin: 0 0 5px;
+            text-align: center;
+            a {
+              text-decoration: none;
+              font-size: 14px;
+              font-weight: 400;
+
+              &:hover {
+                text-decoration: underline;
+              }              
+            }
+          }
         }
       }
     }
   }
 }
-
-// KEYFRAMES

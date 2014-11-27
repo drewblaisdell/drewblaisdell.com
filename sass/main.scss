@@ -50,6 +50,18 @@ $anim-multiplier: 2;
   animation-delay: $delay;
 }
 
+// RETINA MEDIA QUERIES
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+  #home #outlinks li a.twitter-icon {
+    background-image: url('../images/twitter-icon-2x.png');
+    background-size: 24px 20px;
+    background-repeat: no-repeat;
+  }
+}
+
 // MAIN CSS
 html, body { margin: 0; }
 

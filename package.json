@@ -10,10 +10,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-autoprefixer": "^1.0.1",
     "grunt-contrib-copy": "^0.7.0",
-    "mongoose": "^3.8.18",
-    "amdefine": "^0.1.0",
     "body-parser": "^1.9.2",
-    "socket.io": "^1.2.1"
   },
   "devDependencies": {
     "morgan": "^1.5.0"

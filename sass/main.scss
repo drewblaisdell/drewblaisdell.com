@@ -118,11 +118,18 @@ a {
     }
   }
 
-  .outlinks {
+  #outlinks {
     list-style: none;
     text-align: center;
     padding: 0;
     margin: 15px 0 0 0;
+
+    &.waiting {
+      opacity: 0;
+      li a {
+        animation: none;
+      }
+    }
 
     li {
       margin: 0 10px;

@@ -425,36 +425,42 @@ a {
           -ms-transform: translateY(-17px);
               transform: translateY(-17px);
       opacity: 1; }
-  #home .outlinks {
+  #home #outlinks {
     list-style: none;
     text-align: center;
     padding: 0;
     margin: 15px 0 0 0; }
-    #home .outlinks li {
+    #home #outlinks.waiting {
+      opacity: 0; }
+      #home #outlinks.waiting li a {
+        -webkit-animation: none;
+           -moz-animation: none;
+                animation: none; }
+    #home #outlinks li {
       margin: 0 10px;
       padding: 0;
       display: inline-block; }
-      #home .outlinks li:nth-child(1) a {
+      #home #outlinks li:nth-child(1) a {
         -webkit-animation-delay: 100ms;
            -moz-animation-delay: 100ms;
                 animation-delay: 100ms; }
-      #home .outlinks li:nth-child(2) a {
+      #home #outlinks li:nth-child(2) a {
         -webkit-animation-delay: 200ms;
            -moz-animation-delay: 200ms;
                 animation-delay: 200ms; }
-      #home .outlinks li:nth-child(3) a {
+      #home #outlinks li:nth-child(3) a {
         -webkit-animation-delay: 300ms;
            -moz-animation-delay: 300ms;
                 animation-delay: 300ms; }
-      #home .outlinks li:nth-child(4) a {
+      #home #outlinks li:nth-child(4) a {
         -webkit-animation-delay: 400ms;
            -moz-animation-delay: 400ms;
                 animation-delay: 400ms; }
-      #home .outlinks li:nth-child(5) a {
+      #home #outlinks li:nth-child(5) a {
         -webkit-animation-delay: 500ms;
            -moz-animation-delay: 500ms;
                 animation-delay: 500ms; }
-      #home .outlinks li a {
+      #home #outlinks li a {
         display: block;
         -webkit-animation: zoomin 0.2s ease-out 0 1 normal forwards;
            -moz-animation: zoomin 0.2s ease-out 0 1 normal forwards;
@@ -465,7 +471,7 @@ a {
                 transform: scale(0, 0);
         font-size: 20px;
         color: #333; }
-        #home .outlinks li a.twitter-icon {
+        #home #outlinks li a.twitter-icon {
           display: block;
           background: url("../images/twitter-icon.png");
           line-height: 24px;
@@ -473,7 +479,7 @@ a {
           width: 24px;
           height: 20px;
           text-decoration: none; }
-        #home .outlinks li a#phone-icon:active, #home .outlinks li a#email-icon {
+        #home #outlinks li a#phone-icon:active, #home #outlinks li a#email-icon {
           -webkit-tap-highlight-color: transparent; }
   #home .cols {
     padding-top: 40px;

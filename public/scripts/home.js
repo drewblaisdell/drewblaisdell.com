@@ -1,5 +1,6 @@
-document.onload = function() {
+window.onload = function() {
   var title = document.getElementById('title'),
+    outlinks = document.getElementById('outlinks'),
     emailAddress = document.getElementById('email-address'),
     emailIcon = document.getElementById('email-icon'),
     phoneIcon = document.getElementById('phone-icon'),
@@ -31,6 +32,8 @@ document.onload = function() {
         event.preventDefault();
       }
     };
+
+  outlinks.className = '';
 
   emailIcon.addEventListener('mouseenter', iconEvents.showEmail);
   emailIcon.addEventListener('mouseleave', iconEvents.hideEmail);

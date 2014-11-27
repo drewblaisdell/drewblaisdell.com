@@ -2,17 +2,35 @@
 $font-stack: Helvetica Neue, Arial sans-serif;
 $primary-color: #333;
 $secondary-color: #666;
-$menu-border-color: #ddd;
 
-$menu-width: 80;
-
-$sub-menu-width: 200;
-$sub-menu-padding: 10;
-
-$icon-delay: 2000;
+$icon-delay: 0;
 
 /* every animation speed is multiplied by this number, use 1 in production */
-$anim-multiplier: 1;
+$anim-multiplier: 2;
+
+// KEYFRAMES
+
+@keyframes zoomin {
+  0%    { transform: scale(.1, .1); }
+  70%   { transform: scale(1.5, 1.5); }
+  100%  { transform: scale(1, 1); }
+}
+
+@keyframes fadein {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+
+@keyframes slideup {
+  0%    { opacity: 0; transform: translateY(1.5em); }
+  80%   { transform: translateY(-.4em); }
+  100%  { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideright {
+  0%    { opacity: 0; transform: translateX(-2em); }
+  100%  { opacity: 1; transform: translateX(0); }
+}
 
 // MIXINS
 @mixin center {
@@ -41,10 +59,11 @@ a {
 
 #home {
   @include center;
-  max-width: 600px;
-  transition: all .5s ease-out;  
+  width: 75%;
 
   .name {
+    animation: fadein #{.3 * $anim-multiplier}s ease-out 0 1 normal forwards;
+    opacity: 0;
     text-align: center;
     color: $primary-color;
     margin: 0;
@@ -52,7 +71,9 @@ a {
     font-size: 32px;
   }
 
-  .position {
+  .title {
+    opacity: 0;
+    animation: fadein #{.1 * $anim-multiplier}s ease-in .8s 1 normal forwards;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 14px;
@@ -60,7 +81,7 @@ a {
     color: $secondary-color;
   }
 
-  .name, .position {
+  .name, .title {
     cursor: default;
   }
 
@@ -75,17 +96,25 @@ a {
       padding: 0;
       display: inline-block;
 
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) a {
+          animation-delay: #{$icon-delay + $i * 100}ms;
+        }
+      }
+
       a {
-        display: block;
-        height: 22px;
-        font-size: 18px;
+        animation: zoomin #{.1 * $anim-multiplier}s ease-out 0 1 normal forwards;
+        transform: scale(0, 0);
+        font-size: 20px;
         color: $primary-color;
+        float: left;
 
         &:hover {
           
         }
 
         &.twitter-icon {
+          display: block;
           background: url('../images/twitter-icon.png');
           line-height: 24px;
           font-size: 12px;
@@ -98,6 +127,8 @@ a {
 
   .cols {
     padding-top: 40px;
+    animation: fadein #{.3 * $anim-multiplier}s ease-in 0 1 normal forwards;
+
     .col {
       &.projects, &.posts {
         h2 {
@@ -115,8 +146,9 @@ a {
           padding: 0;
 
           li {
-            margin: 0 0 5px;
+            margin: 0 0 4px;
             text-align: center;
+            padding-bottom: 1px;
             a {
               text-decoration: none;
               font-size: 14px;
@@ -130,5 +162,9 @@ a {
         }
       }
     }
+  }
+
+  .octicon::before {
+    width: 22px;
   }
 }

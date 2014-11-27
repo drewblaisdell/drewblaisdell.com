@@ -236,7 +236,8 @@ a {
           line-height: 24px;
           font-size: 12px;
           width: 24px;
-          height: 20px; }
+          height: 20px;
+          text-decoration: none; }
         #home .outlinks li a#phone-icon:active, #home .outlinks li a#email-icon {
           -webkit-tap-highlight-color: transparent; }
   #home .cols {

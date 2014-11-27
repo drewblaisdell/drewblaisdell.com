@@ -71,18 +71,45 @@ a {
     font-size: 32px;
   }
 
-  .title {
+  #title {
     opacity: 0;
-    animation: fadein #{.1 * $anim-multiplier}s ease-in .8s 1 normal forwards;
+    animation: fadein #{.1 * $anim-multiplier}s ease-in .75s 1 normal forwards;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 14px;
     text-align: center;
     color: $secondary-color;
+    transition: all .2s ease-out;
+
+    &.activated {
+      animation-delay: 0;
+    }
+
+    &.hidden {
+      animation: none;
+      opacity: 0;
+      transform: translateY(-17px);
+    }
   }
 
-  .name, .title {
+  .name, #title {
     cursor: default;
+  }
+
+  #phone-number, #email-address {
+    opacity: 0;
+    height: 0;
+    text-align: center;
+    font-size: 14px;
+    color: $secondary-color;
+    font-weight: 600;
+    pointer-events: none;
+    transition: all .2s ease-out;
+
+    &.visible {
+      transform: translateY(-17px);
+      opacity: 1;
+    }
   }
 
   .outlinks {
@@ -103,14 +130,13 @@ a {
       }
 
       a {
+        display: block;
         animation: zoomin #{.1 * $anim-multiplier}s ease-out 0 1 normal forwards;
         transform: scale(0, 0);
         font-size: 20px;
         color: $primary-color;
-        float: left;
 
         &:hover {
-          
         }
 
         &.twitter-icon {
@@ -120,6 +146,10 @@ a {
           font-size: 12px;
           width: 24px;
           height: 20px;
+        }
+
+        &#phone-icon:active, &#email-icon {
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }
       }
     }

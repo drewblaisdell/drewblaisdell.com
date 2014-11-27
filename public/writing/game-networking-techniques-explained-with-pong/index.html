@@ -63,7 +63,7 @@
                 To support online play, Quake shipped with multiplayer that used a pure client/server model. In this model, clients communicate with a server directly, instead of sending packets to a group of peers. Clients send actions to a server running a simulation of the game world and render the changes the server makes to this world when it responds.
             </p>
             <p>
-                In Pong, this model requires that the client of a player attempting to move a paddle up will send its keypress to the server. The server will use this keypress to update the player's position in the game state and sends a response to each client containing the player's new position.
+                In Pong, this model requires that the client of a player attempting to move a paddle will send its keypress to the server. The server will use this keypress to update the player's position in the game state and sends a response to each client containing the player's new position.
             </p>
             <p>
                 Because the client acts as a mere terminal without running a local simulation of the game, the round-trip time between the client and server will pass before the client can render the paddle moving up. The round-trip time between my server (<a href="http://drewblaisdell.com">the one that generated this page</a>, hosted in San Francisco) and my client (a laptop, currently in a cafe in Bangkok with some sort of high-speed connection) is about 400ms. This amount of latency in terminal-client mode makes Pong almost unplayable.
@@ -122,7 +122,7 @@
             </p>
             <hr>
             <p>
-                Barring the creation of a distributed quantum network, latency can't be avoided. The valley between instant and a small fraction of a second will continue to plague real-time applications. Developers of web applications today need to be as creative as the game developers of the 1990s, to create new ways to mask latency and provide users with the illusion of a faster-than-light experience.
+                Barring the creation of a distributed quantum network, network latency can't be avoided. The valley between instant and a small fraction of a second will continue to plague real-time applications. Developers of web applications today need to be as creative as the game developers of the 1990s to create new ways to mask latency and provide users with the illusion of a faster-than-light experience.
             </p>
         </article>
         <footer>

@@ -1,4 +1,4 @@
-window.onload = function() {
+document.onload = function() {
   var title = document.getElementById('title'),
     emailAddress = document.getElementById('email-address'),
     emailIcon = document.getElementById('email-icon'),

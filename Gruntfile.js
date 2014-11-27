@@ -1,5 +1,41 @@
 module.exports = function(grunt) {
   grunt.initConfig({
+    copy: {
+      target: {
+        files: [{
+          expand: true,
+          flatten: true,
+          src: [
+            'public/bower_components/octicons/octicons/*.css',
+            'public/bower_components/octicons/octicons/*.eot',
+            'public/bower_components/octicons/octicons/*.svg',
+            'public/bower_components/octicons/octicons/*.ttf',
+            'public/bower_components/octicons/octicons/*.woff'
+          ],
+          dest: 'public/styles'
+        }]
+      }
+    },
+
+    concat: {
+      css: {
+        src: ['public/styles/octicons.css', 'public/styles/main.css'],
+        dest: 'public/styles/all.css'
+      }
+    },
+
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'public/styles/',
+          src: ['all.css'],
+          dest: 'public/styles/',
+          ext: '.min.css'
+        }]
+      }
+    },
+
     sass: {
       dist: {
         files: {
@@ -15,7 +51,7 @@ module.exports = function(grunt) {
     watch: {
       css: {
         files: './sass/*.scss',
-        tasks: ['sass', 'autoprefixer']
+        tasks: ['sass', 'autoprefixer', 'concat', 'cssmin']
       }
     },
 
@@ -32,10 +68,14 @@ module.exports = function(grunt) {
       }
     }
   });
-
+  
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-autoprefixer');
 
+  grunt.registerTask('minify', ['concat', 'cssmin']);
   grunt.registerTask('default', ['sass', 'autoprefixer']);
 };

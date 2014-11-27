@@ -3,6 +3,12 @@ $font-stack: Helvetica Neue, Arial sans-serif;
 $primary-color: #333;
 $secondary-color: #666;
 
+$purple: #6349b6;
+
+$primary-article-color: #333;
+$secondary-article-color: #444;
+$third-article-color: #666;
+
 $icon-delay: 0;
 
 /* every animation speed is multiplied by this number, use 1 in production */
@@ -197,4 +203,97 @@ a {
   .octicon::before {
     width: 22px;
   }
+}
+
+article {
+  max-width: 600px;
+  margin: 0 auto;
+
+  a {
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: solid 1px #ddd;
+    transition: border .1s ease;
+
+    &:hover {
+      border-color: $purple;
+    }
+  }
+
+  h1, h2 {
+    color: $primary-article-color;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .subline {
+    color: $third-article-color;
+    margin-top: 3px;
+  }
+
+  .date {
+    font-size: 16px;
+  }
+
+  p {
+    line-height: 1.8em;
+    color: $secondary-article-color;
+
+    &.initial {
+      margin-top: 16px;
+    }
+  }
+
+  img {
+    pointer-events: none;
+    highlight: none;
+  }
+
+  img::-moz-selection {
+      background-color: transparent;
+      color: #000;
+  }
+
+  img::selection {
+      background-color: transparent;
+      color: #000;
+  }
+
+  hr {
+    width: 66%;
+    margin: 50px auto;
+    height: 5px;
+    background: #ddd;
+    border: none;
+  }
+}
+
+article, footer {
+  .twitter {
+    display: inline-block;
+    color: $purple;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: solid 1px transparent;
+
+    &:hover {
+      text-decoration: none;
+      border-bottom: solid 1px $purple;
+    }
+  }
+
+  @media (max-width: 600px) {
+    margin: 0 10px;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+footer {
+  border-top: solid 1px #ddd;
+  text-align: center;
+  margin-top: 50px;
+  padding: 13px 0 15px;
 }

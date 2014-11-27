@@ -1,0 +1,40 @@
+html, body {
+  font-family: Helvetica Neue, sans-serif;
+}
+
+article {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+p {
+  line-height: 1.8em;
+}
+
+blockquote p {
+  color: #555;
+  font-style: italic;
+}
+
+img {
+  pointer-events: none;
+  highlight: none;
+}
+
+img::-moz-selection {
+    background-color: transparent;
+    color: #000;
+}
+
+img::selection {
+    background-color: transparent;
+    color: #000;
+}
+
+hr {
+  width: 66%;
+  margin: 50px auto;
+  height: 5px;
+  background: #ddd;
+  border: none;
+}

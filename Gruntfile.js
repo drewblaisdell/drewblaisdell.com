@@ -1,34 +1,9 @@
 module.exports = function(grunt) {
   grunt.initConfig({
-    copy: {
-      client: {
-        src: 'game/*',
-        dest: 'public/scripts/',
-        filter: 'isFile',
-        flatten: true
-      },
-      server: {
-        src: 'game/*',
-        dest: 'app/',
-        filter: 'isFile',
-        flatten: true
-      }
-    },
-
-    includeSource: {
-      options: {
-        basePath: 'public',
-        baseUrl: ''
-      },
-      myTarget: {
-        'public/index.html': 'public/index.tpl.html'
-      }
-    },
-
     sass: {
       dist: {
         files: {
-          'public/styles/main.css': 'public/sass/main.scss'
+          'public/styles/main.css': './sass/main.scss'
         },
         options: {
           compress: false,
@@ -39,7 +14,7 @@ module.exports = function(grunt) {
 
     watch: {
       css: {
-        files: 'public/sass/*.scss',
+        files: './sass/*.scss',
         tasks: ['sass', 'autoprefixer']
       }
     },
@@ -58,11 +33,9 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-include-source');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-autoprefixer');
 
-  grunt.registerTask('default', ['includeSource']);
+  grunt.registerTask('default', ['sass', 'autoprefixer']);
 };

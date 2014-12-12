@@ -41,4 +41,10 @@ window.onload = function() {
   phoneIcon.addEventListener('mouseenter', iconEvents.showNumber);
   phoneIcon.addEventListener('mouseleave', iconEvents.hideNumber);
   phoneIcon.addEventListener('click', iconEvents.showNumber);
+
+  var a = document.getElementById('home');
+
+  setInterval(function() {
+    console.log(a.height);
+  }, 100);
 };

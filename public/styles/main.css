@@ -121,6 +121,7 @@
     background-size: 24px 20px;
     background-repeat: no-repeat; } }
 html, body {
+  height: 100%;
   margin: 0; }
 
 body {
@@ -139,8 +140,8 @@ a {
      -moz-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-font-smoothing: subpixel-antialiased;
-  width: 75%; }
+  width: 75%;
+  padding-top: .5px; }
   #home .name {
     -webkit-animation: fadein 0.6s ease-out 0 1 normal forwards;
        -moz-animation: fadein 0.6s ease-out 0 1 normal forwards;

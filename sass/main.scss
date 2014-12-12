@@ -44,7 +44,6 @@ $anim-multiplier: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 @mixin transition-delay($delay) {
@@ -64,7 +63,10 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 // MAIN CSS
-html, body { margin: 0; }
+html, body {
+  height: 100%;
+  margin: 0;
+}
 
 body {
   font-family: $font-stack;
@@ -79,6 +81,7 @@ a {
 #home {
   @include center;
   width: 75%;
+  padding-top: .5px;
 
   .name {
     animation: fadein #{.3 * $anim-multiplier}s ease-out 0 1 normal forwards;

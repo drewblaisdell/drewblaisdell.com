@@ -5,6 +5,7 @@
 
 article {
   max-width: 800px;
+  padding: 0 10px;
   margin: 0 auto 15px auto;
 }
 
@@ -206,7 +207,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 767px) {
   article {
     padding: 0 10px;
   }

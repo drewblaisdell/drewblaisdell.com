@@ -185,7 +185,7 @@ only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
   body .outlinks li span.twitter-icon {
     background-image: url('../images/twitter-icon-2x.png')!important;
-    background-size: 32px 26px;
+    background-size: 16px 13px;
     background-repeat: no-repeat;
   }
 }

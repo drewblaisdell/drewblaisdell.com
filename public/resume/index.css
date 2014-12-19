@@ -189,6 +189,11 @@ footer {
   font-size: 14px;
 }
 
+.time, .place {
+  clear: both;
+  float: right;
+}
+
 /* media queries */
 @media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
 only screen and (-moz-min-device-pixel-ratio: 1.5),
@@ -234,7 +239,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     text-align: left;
   }
 
-  .time-and-place, .data-point {
+  .time-and-place, .data-point, .time, .place {
     float: none;
   }
 }

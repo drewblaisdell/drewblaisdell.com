@@ -84,7 +84,7 @@ a {
   padding-top: .5px;
 
   .name {
-    animation: fadein #{.3 * $anim-multiplier}s ease-out 0 1 normal forwards;
+    animation: fadein #{.3 * $anim-multiplier}s ease-out 0s 1 normal forwards;
     opacity: 0;
     text-align: center;
     color: $primary-color;
@@ -160,7 +160,7 @@ a {
 
       a {
         display: block;
-        animation: zoomin #{.1 * $anim-multiplier}s ease-out 0 1 normal forwards;
+        animation: zoomin #{.1 * $anim-multiplier}s ease-out 0s 1 normal forwards;
         transform: scale(0, 0);
         font-size: 20px;
         color: $primary-color;
@@ -187,7 +187,7 @@ a {
 
   .cols {
     padding-top: 40px;
-    animation: fadein #{.3 * $anim-multiplier}s ease-in 0 1 normal forwards;
+    animation: fadein #{.3 * $anim-multiplier}s ease-in 0s 1 normal forwards;
 
     .col {
       &.projects, &.posts {
